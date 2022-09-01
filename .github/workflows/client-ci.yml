@@ -6,19 +6,20 @@ on:
     paths: 
       - client/**
       - .github/workflows/client-ci.yml
-
+permissions:
+  contents: write
 jobs: 
   build-and-deploy: 
     runs-on: ubuntu-latest
     steps: 
       - 
-        name: "Use Node.js 16"
-        uses: actions/checkout@v2
-        with: 
-          node-version: 16.x
-          run: |
-              npm i
-              npm run build
+        name: "Checkout"
+        uses: actions/checkout@v3
+      
+      - name: "Install and Build"
+        run: |
+          npm i
+          npm run build
       - 
         name: "Deploy 🚀"
         uses: JamesIves/github-pages-deploy-action@v4
