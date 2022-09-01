@@ -24,6 +24,7 @@ jobs:
       - name: "Install and Build"
         run: |
           cd truffle
+          npm install -g truffle
           npm i
           npx truffle test
           npx truffle migrate --network goerli
