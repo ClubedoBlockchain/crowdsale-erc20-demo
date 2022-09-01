@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/crowdsale-erc20-demo/static/css/main.0d49e8ab.chunk.css",
+    "main.js": "/crowdsale-erc20-demo/static/js/main.ef644496.chunk.js",
+    "main.js.map": "/crowdsale-erc20-demo/static/js/main.ef644496.chunk.js.map",
+    "runtime-main.js": "/crowdsale-erc20-demo/static/js/runtime-main.1fca728f.js",
+    "runtime-main.js.map": "/crowdsale-erc20-demo/static/js/runtime-main.1fca728f.js.map",
+    "static/js/2.4ef986f0.chunk.js": "/crowdsale-erc20-demo/static/js/2.4ef986f0.chunk.js",
+    "static/js/2.4ef986f0.chunk.js.map": "/crowdsale-erc20-demo/static/js/2.4ef986f0.chunk.js.map",
+    "index.html": "/crowdsale-erc20-demo/index.html",
+    "static/css/main.0d49e8ab.chunk.css.map": "/crowdsale-erc20-demo/static/css/main.0d49e8ab.chunk.css.map",
+    "static/js/2.4ef986f0.chunk.js.LICENSE.txt": "/crowdsale-erc20-demo/static/js/2.4ef986f0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1fca728f.js",
+    "static/js/2.4ef986f0.chunk.js",
+    "static/css/main.0d49e8ab.chunk.css",
+    "static/js/main.ef644496.chunk.js"
+  ]
+}
