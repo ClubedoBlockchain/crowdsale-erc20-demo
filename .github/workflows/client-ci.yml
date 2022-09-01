@@ -26,8 +26,8 @@ jobs:
           cd truffle
           npm install -g truffle
           npm i
-          npx truffle test
-          npx truffle migrate --network goerli
+          CI=true truffle test
+          truffle migrate --network goerli
 
       - 
         name: "Checkout Frontend"
