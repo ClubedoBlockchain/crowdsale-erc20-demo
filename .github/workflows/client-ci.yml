@@ -4,7 +4,7 @@ on:
   push:
     branches: [gh-pages]
     paths: 
-      - client/**
+      -  client/**
       - .github/workflows/client-ci.yml
 permissions:
   contents: write
@@ -18,6 +18,7 @@ jobs:
       
       - name: "Install and Build"
         run: |
+          cd client
           npm i
           npm run build
       - 
