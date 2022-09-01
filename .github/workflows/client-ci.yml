@@ -1,28 +1,44 @@
---- 
-contents: write
+name: Client CI
+
+on:
+  push:
+    branches: [master]
+    paths: 
+      -  client/**
+      - .github/workflows/client-ci.yml
+permissions:
+  contents: write
 jobs: 
   build-and-deploy: 
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - 
-        name: "Use Node.js 16"
-        uses: actions/checkout@v2
-        with: 
-          node-version: 16.x
-          run: |
-              npm i
-              npm run build
+        name: "Checkout Truffle"
+        uses: actions/checkout@v3
+        env:
+          TOTAL_SUPPLY: ${{ secrets.TOTAL_SUPPLY }}
+          RATE: ${{ secrets.RATE }}
+          MNEMONIC: ${{ secrets.MNEMONIC }}
+          ALCHEMY_GOERLI: ${{ secrets.ALCHEMY_GOERLI }}
+      
+      - name: "Install and Build"
+        run: |
+          cd truffle
+          npm i
+          npx truffle test
+          npx truffle migrate --network goerli
+
+      - 
+        name: "Checkout Frontend"
+        uses: actions/checkout@v3
+      
+      - name: "Install and Build"
+        run: |
+          cd client
+          npm i
+          npm run build
       - 
         name: "Deploy 🚀"
         uses: JamesIves/github-pages-deploy-action@v4
         with: 
-          folder: build
-name: "Client CI"
-permissions: ~
-true: 
-  pull_request: 
-    branches: 
-      - master
-    paths: 
-      - client/**
-      - .github/workflows/client-ci.yml
+          folder: client/build
