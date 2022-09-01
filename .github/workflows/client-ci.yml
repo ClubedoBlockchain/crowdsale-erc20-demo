@@ -1,5 +1,12 @@
---- 
-contents: write
+name: Client CI
+
+on:
+  push:
+    branches: [gh-pages]
+    paths: 
+      - client/**
+      - .github/workflows/client-ci.yml
+
 jobs: 
   build-and-deploy: 
     runs-on: ubuntu-latest
@@ -17,12 +24,3 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with: 
           folder: build
-name: "Client CI"
-permissions: ~
-true: 
-   push:
-    branches:
-      - gh-pages
-    paths: 
-      - client/**
-      - .github/workflows/client-ci.yml
