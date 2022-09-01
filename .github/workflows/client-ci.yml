@@ -20,9 +20,9 @@ jobs:
 name: "Client CI"
 permissions: ~
 true: 
-  pull_request: 
-    branches: 
-      - master
+   push:
+    branches:
+      - gh-pages
     paths: 
       - client/**
       - .github/workflows/client-ci.yml
