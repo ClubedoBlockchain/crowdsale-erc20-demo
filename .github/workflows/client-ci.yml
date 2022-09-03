@@ -87,6 +87,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy
+        continue-on-error: true
         run: |
             cd sign_on_rust
             cargo lambda deploy --iam-role $IAM_ROLE
