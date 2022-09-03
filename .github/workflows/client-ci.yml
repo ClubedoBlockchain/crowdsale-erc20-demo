@@ -35,20 +35,14 @@ jobs:
       - name: "Run Truffle Test"
         run: |
           cd truffle
-          echo $TOTAL_SUPPLY
-          echo $MNEMONIC
-          echo $RATE
           truffle test
       
       - name: "Run Migrate"
         run: |
           cd truffle
           truffle migrate --network goerli
-      - 
-        name: "Checkout Frontend"
-        uses: actions/checkout@v3
-      
-      - name: "Install and Build"
+
+      - name: "Frontend Install and Build"
         run: |
           cd client
           npm i
