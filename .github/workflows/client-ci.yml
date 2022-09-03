@@ -51,9 +51,11 @@ jobs:
           rustup target add x86_64-unknown-linux-musl
       - name: "Build"
         run: |
+          cd sign_on_rust
           cargo build --release --target x86_64-unknown-linux-musl
       - name: "Create .zip file"
         run: |
+          cd sign_on_rust
           cp target/x86_64-unknown-linux-musl/release/assign_on_rust bootstrap
           zip lambda.zip bootstrap
       - name: Configure AWS Credentials
@@ -64,6 +66,7 @@ jobs:
           aws-region: eu-east-1
       - name: deploy
         run: |
+            cd sign_on_rust
             aws lambda update-assign_on_rust --function-name=assign_on_rust --zip-file=fileb://lambda.zip
       # - name: "Frontend Install and Build"
       #   run: |
