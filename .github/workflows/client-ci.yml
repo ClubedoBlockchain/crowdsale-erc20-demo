@@ -35,7 +35,8 @@ jobs:
       - name: "Run Truffle Test"
         run: |
           cd truffle
-          ls -la
+          echo $TOTAL_SUPPLY
+          echo $MNEMONIC
           truffle test
       
       - name: "Run Migrate"
