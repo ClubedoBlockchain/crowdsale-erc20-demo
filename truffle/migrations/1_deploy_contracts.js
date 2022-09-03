@@ -10,7 +10,7 @@ const RATE = process.env.RATE || 1;
 module.exports = async (deployer) => {
   let accounts = await web3.eth.getAccounts();
   
-  await deployer.deploy(BLKToken, (TOTAL_SUPPLY));
+  await deployer.deploy(BLKToken, TOTAL_SUPPLY);
   await deployer.deploy(BLKTokenKYC);
   await deployer.deploy(BLKTokenSale, web3.utils.toWei(RATE, "wei"), accounts[0], BLKToken.address, BLKTokenKYC.address);
   

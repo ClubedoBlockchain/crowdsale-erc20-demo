@@ -30,7 +30,7 @@ jobs:
       
       - name: "Run Ganache CLI"
         run: |
-          ganache-cli -p 8545 --gasLimit=0x1fffffffffffff --allowUnlimitedContractSize -e 1000000000 > /dev/null & while netstat -lnt | awk '$4 ~ /:8545$/ {exit 1}'; do sleep 5; done
+          ganache-cli -p 8545 --gasLimit=0x1fffffffffffff --allowUnlimitedContractSize -e 1000000000 > /dev/null & while netstat -lnt | awk '$4 ~ /:8545$/ {exit 1}'; do sleep 30; done
       
       - name: "Run Truffle Test"
         run: |
