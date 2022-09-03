@@ -17,7 +17,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   IAM_ROLE: ${{ secrets.IAM_ROLE }}
 jobs: 
-  build-and-deploy: 
+  test: 
     runs-on: ubuntu-latest
     steps:
       - 
@@ -59,7 +59,9 @@ jobs:
         run: |
           cd truffle
           truffle test
-      
+  build-and-deploy: 
+    runs-on: ubuntu-latest
+    steps:
       - name: "Run Migrate"
         run: |
           cd truffle
@@ -100,4 +102,4 @@ jobs:
         name: "Deploy Frontend 🚀"
         uses: JamesIves/github-pages-deploy-action@v4
         with: 
-          folder: client/build
+          folder: client/build    
