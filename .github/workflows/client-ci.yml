@@ -37,6 +37,7 @@ jobs:
           cd truffle
           echo $TOTAL_SUPPLY
           echo $MNEMONIC
+          echo $RATE
           truffle test
       
       - name: "Run Migrate"

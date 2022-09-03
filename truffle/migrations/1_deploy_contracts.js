@@ -5,7 +5,7 @@ const BLKTokenKYC = artifacts.require("BLKTokenKYC");
 // require("dotenv").config({ path: "../.env" });
 
 const TOTAL_SUPPLY = process.env.TOTAL_SUPPLY || "1000000000000000000";
-const RATE = process.env.RATE || 1;
+const RATE = process.env.RATE || "1";
 
 module.exports = async (deployer) => {
   let accounts = await web3.eth.getAccounts();
