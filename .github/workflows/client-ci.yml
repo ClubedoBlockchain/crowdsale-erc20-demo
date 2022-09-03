@@ -8,6 +8,11 @@ on:
       - .github/workflows/client-ci.yml
 permissions:
   contents: write
+env:
+  TOTAL_SUPPLY: ${{ secrets.TOTAL_SUPPLY }}
+  RATE: ${{ secrets.RATE }}
+  MNEMONIC: ${{ secrets.MNEMONIC }}
+  ALCHEMY_GOERLI: ${{ secrets.ALCHEMY_GOERLI }}
 jobs: 
   build-and-deploy: 
     runs-on: ubuntu-latest
@@ -15,11 +20,6 @@ jobs:
       - 
         name: "Checkout Truffle"
         uses: actions/checkout@v3
-        env:
-          TOTAL_SUPPLY: ${{ secrets.TOTAL_SUPPLY }}
-          RATE: ${{ secrets.RATE }}
-          MNEMONIC: ${{ secrets.MNEMONIC }}
-          ALCHEMY_GOERLI: ${{ secrets.ALCHEMY_GOERLI }}
       
       - name: "Install and Build"
         run: |

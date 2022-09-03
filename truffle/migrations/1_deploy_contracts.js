@@ -2,10 +2,10 @@ const BLKToken = artifacts.require("BLKToken");
 const BLKTokenSale = artifacts.require("BLKTokenSale");
 const BLKTokenKYC = artifacts.require("BLKTokenKYC");
 
-// require("dotenv").config({ path: "../.env" });
+require('dotenv').config();
 
-const TOTAL_SUPPLY = process.env.TOTAL_SUPPLY || "1000000000000000000";
-const RATE = process.env.RATE || "1";
+const TOTAL_SUPPLY = process.env.TOTAL_SUPPLY;
+const RATE = process.env.RATE;
 
 module.exports = async (deployer) => {
   let accounts = await web3.eth.getAccounts();

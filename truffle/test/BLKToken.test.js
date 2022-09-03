@@ -1,6 +1,6 @@
 const Token = artifacts.require("BLKToken");
 
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config();
 
 const TOTAL_SUPPLY = process.env.TOTAL_SUPPLY;
 
