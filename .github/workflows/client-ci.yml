@@ -13,6 +13,8 @@ env:
   RATE: ${{ secrets.RATE }}
   MNEMONIC: ${{ secrets.MNEMONIC }}
   ALCHEMY_GOERLI: ${{ secrets.ALCHEMY_GOERLI }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 jobs: 
   build-and-deploy: 
     runs-on: ubuntu-latest
@@ -56,18 +58,18 @@ jobs:
       - name: "Create .zip file"
         run: |
           cd sign_on_rust
-          cp target/x86_64-unknown-linux-gnu/release/assign_on_rust bootstrap
+          cp target/x86_64-unknown-linux-gnu/release/sign_on_rust bootstrap
           zip lambda.zip bootstrap
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }} 
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-east-1
+          aws-region: us-east-1
       - name: deploy
         run: |
             cd sign_on_rust
-            aws lambda update-assign_on_rust --function-name=assign_on_rust --zip-file=fileb://lambda.zip
+            aws lambda update-function-code --function-name=assign_on_rust --zip-file=fileb://lambda.zip
       # - name: "Frontend Install and Build"
       #   run: |
       #     cd client
