@@ -4,7 +4,7 @@ const BLKTokenKYC = artifacts.require("BLKTokenKYC");
 
 // require("dotenv").config({ path: "../.env" });
 
-const TOTAL_SUPPLY = process.env.TOTAL_SUPPLY;
+const TOTAL_SUPPLY = process.env.TOTAL_SUPPLY || 1000000000000000000n;
 const RATE = process.env.RATE || 1;
 
 module.exports = async (deployer) => {
