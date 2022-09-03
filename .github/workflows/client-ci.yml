@@ -46,10 +46,12 @@ jobs:
           kill $(lsof -t -i:8545)
 
       - name: "Deploy Lambda"
-        run: cd sign_on_rust
-        run: rustup target add x86_64-unknown-linux-musl
+        run: |
+          cd sign_on_rust
+          rustup target add x86_64-unknown-linux-musl
       - name: "Build"
-        run: cargo build --release --target x86_64-unknown-linux-musl
+        run: |
+          cargo build --release --target x86_64-unknown-linux-musl
       - name: "Create .zip file"
         run: |
           cp target/x86_64-unknown-linux-musl/release/assign_on_rust bootstrap
