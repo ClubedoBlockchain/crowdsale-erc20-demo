@@ -59,7 +59,7 @@ async fn run_transaction(
     let mnemonic = env::var("MNEMONIC").expect("$MNEMONIC is not set");
     let endpoint = env::var("NETWORK_URL").expect("$NETWORK_URL is not set");
     // Gettting the first account in the Wallet
-
+    
     let wallet = utils::key(0, &mnemonic);
 
     // Getting Provider

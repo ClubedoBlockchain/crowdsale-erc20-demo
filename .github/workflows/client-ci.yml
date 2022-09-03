@@ -15,6 +15,7 @@ env:
   ALCHEMY_GOERLI: ${{ secrets.ALCHEMY_GOERLI }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  IAM_ROLE: ${{ secrets.IAM_ROLE }}
 jobs: 
   build-and-deploy: 
     runs-on: ubuntu-latest
@@ -51,32 +52,30 @@ jobs:
         run: |
           cd sign_on_rust
           rustup target add x86_64-unknown-linux-gnu
+      
       - name: "Build"
         run: |
           cd sign_on_rust
-          cargo build --release --target x86_64-unknown-linux-gnu
-      - name: "Create .zip file"
-        run: |
-          cd sign_on_rust
-          cp target/x86_64-unknown-linux-gnu/release/sign_on_rust bootstrap
-          zip lambda.zip bootstrap
-      - name: Configure AWS Credentials
+          cargo lambda build --release --target x86_64-unknown-linux-gnu
+
+      - name: "Configure AWS Credentials"
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }} 
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: deploy
+
+      - name: Deploy
         run: |
             cd sign_on_rust
-            aws lambda update-function-code --function-name=assign_on_rust --zip-file=fileb://lambda.zip
-      # - name: "Frontend Install and Build"
-      #   run: |
-      #     cd client
-      #     npm i
-      #     npm run build
-      # - 
-      #   name: "Deploy Frontend 🚀"
-      #   uses: JamesIves/github-pages-deploy-action@v4
-      #   with: 
-      #     folder: client/build
+            cargo lambda deploy --iam-role $IAM_ROLE
+      - name: "Frontend Install and Build"
+        run: |
+          cd client
+          npm i
+          npm run build
+      - 
+        name: "Deploy Frontend 🚀"
+        uses: JamesIves/github-pages-deploy-action@v4
+        with: 
+          folder: client/build
