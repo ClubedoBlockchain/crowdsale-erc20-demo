@@ -60,6 +60,7 @@ jobs:
           cd truffle
           truffle test
   build-and-deploy: 
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - 
