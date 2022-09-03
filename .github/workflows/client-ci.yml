@@ -61,7 +61,6 @@ jobs:
           truffle test
   build-and-deploy: 
     runs-on: ubuntu-latest
-    steps:
       - 
         name: "Checkout Truffle"
         uses: actions/checkout@v3
