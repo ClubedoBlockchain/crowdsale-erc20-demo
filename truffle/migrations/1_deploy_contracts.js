@@ -2,7 +2,7 @@ const BLKToken = artifacts.require("BLKToken");
 const BLKTokenSale = artifacts.require("BLKTokenSale");
 const BLKTokenKYC = artifacts.require("BLKTokenKYC");
 
-require("dotenv").config({ path: "../.env" });
+// require("dotenv").config({ path: "../.env" });
 
 const TOTAL_SUPPLY = process.env.TOTAL_SUPPLY;
 const RATE = process.env.RATE || 1;
