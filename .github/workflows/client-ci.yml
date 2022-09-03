@@ -25,10 +25,20 @@ jobs:
         run: |
           cd truffle
           npm install -g truffle
+          npm install -g ganache-cli
           npm i
+      
+      - name: "Run Ganache CLI"
+        run: |
+          ganache-cli -p 8545 --gasLimit=0x1fffffffffffff --allowUnlimitedContractSize -e 1000000000 > /dev/null & while netstat -lnt | awk '$4 ~ /:8545$/ {exit 1}'; do sleep 5; done
+      
+      - name: "Run Truffle Test"
+        run: |
           CI=true truffle test
+      
+      - name: "Run Migrate"
+        run: |
           truffle migrate --network goerli
-
       - 
         name: "Checkout Frontend"
         uses: actions/checkout@v3
