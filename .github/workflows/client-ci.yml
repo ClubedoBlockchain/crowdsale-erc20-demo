@@ -145,7 +145,7 @@ jobs:
         name: "Frontend Install and Build"
         run: |
           ls
-          cp contracts/* client/src/contracts
+          cp contracts client/src/contracts
           cd client
           npm i
           npm run build
