@@ -49,14 +49,23 @@ function BLKTokenSale() {
     }
 
     const listenToTokenTransferEvents = () => {
-        BLKToken.contract.events.Transfer({ to: accounts[0] }).once("data", async (event) => {
-            getBalance();
-        })
+        try {
+            BLKToken.contract.events.Transfer({ to: accounts[0] }).once("data", async (event) => {
+                getBalance();
+            })
+        } catch (e) {
+            notifyError("Contract is not connected to the right network. Try change to Goerli")
+        }
+        
     }
 
     const getBalance = async () => {
-        const balance = await BLKToken.contract.methods.balanceOf(accounts[0]).call();
-        setBalanceValue(balance);
+        try {
+            const balance = await BLKToken.contract.methods.balanceOf(accounts[0]).call();
+            setBalanceValue(balance);
+        } catch (e) {
+            notifyError("Contract is not connected to the right network. Try change to Goerli")
+        }
     }
 
 

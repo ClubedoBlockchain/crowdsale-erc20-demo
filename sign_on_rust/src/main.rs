@@ -90,10 +90,11 @@ async fn run_transaction(
 
     let completed = kyc_contract.completed(request_address);    
     
-    let message = match   completed.send().await {
-        Ok(_) => "Successfully Sent",
-        _ => "Address has already in the list"
-     };
+    let message = if let Err(e) = completed.send().await {
+        format!("{:#?}", e )
+    } else {
+        "Successfully Sent".to_string()
+    };
 
     Ok(json!({ "transaction": transaction, "address": address, "message": message }))
 }
