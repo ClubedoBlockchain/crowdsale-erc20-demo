@@ -95,12 +95,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: contracts
+          path: client/src/contracts
 
       -
         name: "Install dependencies"  
         run: |
           ls
-          cp contracts/* client/src/contracts
           cd sign_on_rust
           npm install -g @ziglang/cli
           rustup target add x86_64-unknown-linux-gnu
@@ -140,12 +140,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: contracts
+          path: client/src/contracts
 
       - 
         name: "Frontend Install and Build"
         run: |
           ls
-          cp contracts client/src/contracts
           cd client
           npm i
           npm run build
