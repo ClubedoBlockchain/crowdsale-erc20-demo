@@ -99,8 +99,6 @@ jobs:
       -
         name: "Install dependencies"  
         run: |
-          ls
-          pwd
           cd sign_on_rust
           npm install -g @ziglang/cli
           rustup target add x86_64-unknown-linux-gnu
@@ -144,9 +142,6 @@ jobs:
       - 
         name: "Frontend Install and Build"
         run: |
-          cd ~
-          ls
-          pwd
           cd client
           npm i
           npm run build
