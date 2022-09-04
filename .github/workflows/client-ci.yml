@@ -86,11 +86,11 @@ jobs:
     needs: build-contracts
     runs-on: ubuntu-latest
     steps:
-      - 
-        name: "Deploy Lambda"
-        uses: actions/download-artifact@v2
-        with:
-          name: contracts
+      # - 
+      #   name: "Deploy Lambda"
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: contracts
       -
         name: "Install dependencies"  
         run: |
@@ -135,6 +135,7 @@ jobs:
       - 
         name: "Frontend Install and Build"
         run: |
+          cd ~
           ls
           pwd
           cd client
