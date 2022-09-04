@@ -76,7 +76,7 @@ jobs:
           ./pos-deploy.sh
 
       - 
-        name: "Upload"
+        name: "Uploads"
         uses: actions/upload-artifact@v2
         with:
           name: contracts
