@@ -75,6 +75,8 @@ jobs:
           ./pos-deploy.sh
           kill $(lsof -t -i:8545)
 
+      - 
+        name: "Upload"
         uses: actions/upload-artifact@v2
         with:
           name: contracts
@@ -89,16 +91,18 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: contracts
+      -
+        name: "Install dependencies"  
         run: |
           cd sign_on_rust
           npm install -g @ziglang/cli
           rustup target add x86_64-unknown-linux-gnu
+          cargo install cargo-lambda
       
       - 
-        name: "Build"
+        name: "Build with Cargo"
         run: |
           cd sign_on_rust
-          cargo install cargo-lambda
           cargo lambda build --release --target x86_64-unknown-linux-gnu
 
       - 
@@ -110,7 +114,7 @@ jobs:
           aws-region: us-east-1
 
       - 
-        name: Deploy
+        name: "Deploy to Lambda"
         continue-on-error: true
         run: |
             cd sign_on_rust
@@ -125,7 +129,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: contracts
-
+          
       - 
         name: "Frontend Install and Build"
         run: |
