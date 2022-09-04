@@ -58,6 +58,7 @@ jobs:
         run: |
           cd truffle
           truffle test
+  
   build-contracts: 
     needs: test
     runs-on: ubuntu-latest
@@ -73,7 +74,6 @@ jobs:
           truffle migrate --network goerli
           chmod +x pos-deploy.sh
           ./pos-deploy.sh
-          kill $(lsof -t -i:8545)
 
       - 
         name: "Upload"
@@ -129,7 +129,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: contracts
-          
+
       - 
         name: "Frontend Install and Build"
         run: |
