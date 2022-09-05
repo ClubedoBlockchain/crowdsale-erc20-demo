@@ -72,9 +72,7 @@ jobs:
           npm install -g truffle
           npm i
           truffle migrate --network goerli
-          chmod +x pos-deploy.sh
-          ./pos-deploy.sh
-
+          
       - 
         name: "Upload to Clients"
         uses: actions/upload-artifact@v2
