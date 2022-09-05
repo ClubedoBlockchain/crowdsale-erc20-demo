@@ -133,6 +133,7 @@ jobs:
         run: |
             cd sign_on_rust
             cargo lambda deploy --iam-role $IAM_ROLE
+            aws lambda publish-version --function-name sign_on_rust >> /dev/null
   
   deploy-frontend:
     needs: build-contracts
