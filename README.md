@@ -10,7 +10,7 @@ It's a Crowdsale Smart COntract with fixed minted Tokens at creation and Know Yo
 
 ## Stack
 
-Typescript, RUST, Solidity, React, GitHub Actions, and AWS Lambda.
+RUST, Solidity, JavaScript, React, GitHub Actions, and AWS Lambda.
 
 ## Truffle and React
 
