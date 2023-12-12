@@ -40,5 +40,11 @@
   },
   "devDependencies": {
     "react-app-rewired": "^2.2.1"
+  },
+  "browser": {
+    "crypto": false,
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
