@@ -4,8 +4,6 @@ const TokenKYC = artifacts.require("BLKTokenKYC");
 
 require("dotenv").config();
 
-const RATE = process.env.RATE;
-
 const chai = require("./setupchai");
 const BN = web3.utils.BN;
 
@@ -24,7 +22,7 @@ contract("TokenSale Test", async accounts => {
         let totalSupply = await instance.totalSupply();
         expect(balanceOfTokenSale).to.be.a.bignumber.equal(totalSupply);
     });
-
+    
     it("should be possible to buy tokens ", async () => {
         let tokenInstance = await Token.deployed();
         let tokenSaleInstance = await TokenSale.deployed();
@@ -35,16 +33,13 @@ contract("TokenSale Test", async accounts => {
         
         let balanceBefore = await tokenInstance.balanceOf(initialHolder);
 
-
-        let priceInWeiPerToken = await tokenSaleInstance.weiPerToken(RATE);
+        let priceInWeiPerToken = await tokenSaleInstance.rate();
             
         await expect(tokenSaleInstance.sendTransaction({ from: initialHolder, value: web3.utils.toWei(priceInWeiPerToken, "wei") })).to.be.fulfilled;
-
         
         let balanceAfter = await tokenInstance.balanceOf(initialHolder);
 
-
-        return expect(balanceAfter).to.be.a.bignumber.equal(balanceBefore.add(new BN(1)));
+        return expect(balanceAfter).to.be.a.bignumber.equal(balanceBefore.add((new BN(1000000))));
 
     });
 });

@@ -26,22 +26,4 @@ contract BLKTokenSale is Crowdsale {
         super._preValidatePurchase(_beneficiary, _weiAmount);
         require(kyc.allowed(msg.sender), "KYC is not completed");
     }
-
-    function _getTokenAmount(uint256 _weiAmount)
-        internal
-        view
-        override
-        returns (uint256)
-    {
-        require(
-            _weiAmount >= weiPerToken(super.rate()),
-            "Not Enough per 1 Token"
-        );
-        return _weiAmount.div(weiPerToken(super.rate()));
-    }
-
-    function weiPerToken(uint _rate) public pure returns (uint) {
-        uint256 base = 10**18;
-        return base.div(_rate);
-    }
 }
