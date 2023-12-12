@@ -153,6 +153,7 @@ jobs:
       - 
         name: "Frontend Install and Build"
         run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
           ls
           cd client
           npm i
