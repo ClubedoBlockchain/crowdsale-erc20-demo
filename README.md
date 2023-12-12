@@ -1,6 +1,8 @@
 # Crowdsale ERC-20 Demo
 
-It's a Crowdsale Smart COntract with fixed minted Tokens at creation and Know Your Customer (KYC) implementation for cases where it's necessary. I used RUST on the backend to simulate contract management by the server side using the same Wallet MNEMONIC that was used by contract creation. In this case RUST backend will be used to update de list of KYC approved users, but it could be used for free mint NFTS's, signed transactions, oracle integration, etc. I used Lambda because the transaction doesn't require response from the backend.
+It's a Crowdsale Smart Contract with fixed minted Tokens at creation and Know Your Customer (KYC) implementation for cases where it's necessary. 
+The implemented RUST backend simulates  a contract management by the server side using same Wallet MNEMONIC that was used at contract creation. 
+In this prototype project, RUST backend will be used to update de list of KYC approved users.
 
 [Live Demo](https://clubedoblockchain.github.io/crowdsale-erc20-demo/)
 
@@ -30,7 +32,7 @@ $ cd client
 $ npm start
   Starting the development server...
 ```
-You can use GANACHE to run a local blockchain and change truffle.config.ts to connect in your endpoint. Default installation for Ganache will run the blockchain at 7545 port, but for development you can use Truffle development network, check truffle documentation to get details.
+You can use GANACHE to run a local blockchain and change truffle.config.ts to connect to your endpoint. Default installation for Ganache will run the blockchain at 7545 port, but for development you can use Truffle development network, check truffle documentation to get details.
 
 __Where can I find more resources?__
 
