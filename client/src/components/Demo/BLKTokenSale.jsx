@@ -62,7 +62,9 @@ function BLKTokenSale() {
     const getBalance = async () => {
         try {
             const balance = await BLKToken.contract.methods.balanceOf(accounts[0]).call();
-            setBalanceValue(balance);
+            const asBLKToken = web3.utils.fromWei(balance, "ether");
+            
+            setBalanceValue(asBLKToken);
         } catch (e) {
             notifyError("Contract is not connected to the right network. Try change to Goerli")
         }

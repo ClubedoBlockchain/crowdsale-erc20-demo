@@ -9,4 +9,6 @@ const chaiBN = require('chai-bn')(BN);
 chai.use(chaiBN);
 chai.use(chaiAsPromised);
 
+process.env.NODE_ENV = 'test';
+
 module.exports = chai;
